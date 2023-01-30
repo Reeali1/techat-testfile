@@ -1,0 +1,12 @@
+ ---
+- name: Simple playbook to install httpd package
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  tasks:
+  - name: Remove httpd package
+    yum: name=httpd state=absent
+  - name: Remove index.html file
+    file: path=/var/www/html/index.html state=absent
+
